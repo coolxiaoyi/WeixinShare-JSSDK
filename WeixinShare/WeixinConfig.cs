@@ -44,7 +44,10 @@ namespace Tencent
                     if (para != "")
                     {
                         JObject jsonObj = (JObject)JsonConvert.DeserializeObject(retString);
-                        retString = jsonObj[para].ToString();
+                        if (jsonObj[para] != null)
+                        {
+                            retString = jsonObj[para].ToString();
+                        }
                     }
                 }
             }
