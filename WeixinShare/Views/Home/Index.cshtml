@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>微信分享网页自定义缩略图</h1>
+    <p class="lead">JSSDK</p>
+    <p><a href="#" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>涉及主要文件</h2>
+        <ol>
+            <li>
+                /WeixinConfig.cs //主逻辑
+            </li>            
+            <li>
+                /Controllers/WeixinController.cs //ajax方式获取签名信息 
+            </li>            
+            <li>
+                /Scripts/WeixinShare.js //前端方法封装
+            </li>
+            <li>
+                /Views/Home/Index.cshtml //调用分享方法
+            </li>
+        </ol>        
+    </div>     
+</div>
+
+@section scripts{
+    @*微信分享接口*@
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+    <script src="~/Scripts/WeixinShare.js"></script>
+    <script type="text/javascript">
+        //分享标题
+        var title = '微信分享页标题';
+        //分享描述
+        var desc = '微信分享页描述';
+        //分享链接
+        var link = window.location.href;
+        //分享缩略图
+        var imgUrl = link.substring(0, link.indexOf(window.location.pathname)) + '/Content/logo.png';
+        //分享设置
+        WeixinShare(title, desc, link, imgUrl);
+    </script>
+}
